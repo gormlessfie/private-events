@@ -1,0 +1,13 @@
+<section class='section'>
+  <div class='container'>
+    <h2 class='title is-3'>List of all upcoming events</h2>
+
+    <% @events.each do |event| %>
+      <div class='box'>
+        <h3 class='title is-4'><%= event.title %></h4>
+        <p class='subtitle is-6'><%= event.description %></p>
+      </div>
+    <% end%>
+
+  </div>
+</section>
