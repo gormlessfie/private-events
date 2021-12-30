@@ -11,6 +11,7 @@
         <p class='subtitle is-6'><%= event.description %></p>
       </div>
       <div class='buttons'>
+        <%= link_to 'Event page', user_event_path(current_user, event), class: 'button is-link is-outlined'%>
         <%= link_to 'Edit event', edit_user_event_path(current_user, event), class: 'button is-info is-outlined' %>
         <%= link_to 'Delete event', user_event_path(current_user, event), method: :delete,
             data: { confirm: 'Are you sure?' }, class: 'button is-danger is-outlined' %>
