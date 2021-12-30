@@ -1,4 +1,5 @@
 <div class='container'>
+  <h1 class='title is-1'><%= type %> Event</h1>
   <%= form_with model: [@user, @event] do |form| %>
     <div class='block'>
       <%= form.label :title %><br>
@@ -11,7 +12,7 @@
     </div>
 
     <div class='block buttons'>
-      <%= form.submit 'Create Event', class: 'button is-primary' %>
+      <%= form.submit type.concat(' Event'), class: 'button is-primary' %>
     </div>
   <% end %>
 </div>
