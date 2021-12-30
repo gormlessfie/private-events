@@ -1,0 +1,16 @@
+<div class='navbar is-dark'>
+  <div class='navbar-brand'>
+    <%= link_to 'Homepage', root_path, class:'navbar-item title is-3' %>
+  </div>
+
+  <div class='navbar-end'>
+    <div class='navbar-item buttons'>
+      <% if user_signed_in? %>
+        <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'button is-danger' %>
+      <% else %>
+        <%= link_to 'Sign up', new_user_session_path, class: 'button is-light' %>
+        <%= link_to 'Log in', new_user_registration_path, class:'button is-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>

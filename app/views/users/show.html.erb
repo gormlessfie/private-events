@@ -1,0 +1,18 @@
+<section class='section'>
+  <h1 class='container title is-1'>Your Events</h1>
+</section>
+
+<div class='container'>
+  <% @events.each do |event| %>
+    <div class='box'>
+      <h2 class='title is-4'><%= event.title %></h2>
+
+      <div class='box'>
+        <p class='subtitle is-6'><%= event.description %></p>
+      </div>
+      <div class='box buttons'>
+        <%= link_to 'Edit event', root_path, class: 'button is-info is-outlined' %>
+        <%= link_to 'Delete event', root_path, class: 'button is-danger is-outlined' %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,16 @@
+<% flash.each do |type, msg| %>
+  <% case type %>
+  <% when 'notice' %>
+    <div class='notification is-primary is-light'>
+      <%= msg %>
+    </div>
+  <% when 'alert' %>
+    <div class='notification is-info is-light'>
+      <%= msg %>
+    </div>
+  <% else %>
+    <div class='notification is-warning is-light'>
+      <%= msg %>
+    </div>
+  <% end %>
+<% end %>
