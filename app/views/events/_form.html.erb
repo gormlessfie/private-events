@@ -1,18 +1,40 @@
-<div class='container'>
+<div class='container box is-max-widescreen'>
   <h1 class='title is-1'><%= type %> Event</h1>
+
   <%= form_with model: [@user, @event] do |form| %>
-    <div class='block'>
+    <div class='field'>
       <%= form.label :title %><br>
-      <%= form.text_field :title, class: 'input is-large' %>
+      <div class='control'>
+        <%= form.text_field :title, class: 'input is-large is-info',
+                             placeholder: 'Enter a title for the event' %>
+      </div>
     </div>
 
-    <div class='block'>
+    <div class='field'>
       <%= form.label :description%>
-      <%= form.text_area :description, class: 'textarea is-medium' %>
+      <div class='control'>
+        <%= form.text_area :description, class: 'textarea is-normal is-info',
+                            placeholder: 'Enter a description for the event' %>
+      </div>
     </div>
 
-    <div class='block buttons'>
-      <%= form.submit type.concat(' Event'), class: 'button is-primary' %>
+    <div class='field'>
+      <%= form.label :event_date %><br>
+      <div class='control'>
+        <%= form.date_field :event_date, class: 'column is-one-fifth input is-medium is-info' %>
+      </div>
+    </div>
+
+    <div class='field buttons'>
+      <div class='control is-grouped'>
+        <%= form.submit type.concat(' Event'), class: 'button is-primary' %>
+
+        <% if type == 'Edit' && current_user == @event.creator %>
+          <%= link_to 'Delete event', user_event_path(@user, @event), method: :delete,
+              data: { confirm: 'Are you sure?' }, class: 'button is-danger is-outlined' %>
+        <% end %>
+
+      </div>
     </div>
   <% end %>
 </div>

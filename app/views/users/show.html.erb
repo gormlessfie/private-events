@@ -5,11 +5,13 @@
 <div class='container'>
   <% @events.each do |event| %>
     <div class='box'>
-      <h2 class='title is-4'><%= event.title %></h2>
+      <h2 class='title is-3'><%= event.title %></h2>
+      <h3 class='subtitle is-6'>
+        created by: <%= event.creator.username%><br>
+        Event date: <%= event.event_date %>
+      </h3>
 
-      <div class='box'>
-        <p class='subtitle is-6'><%= event.description %></p>
-      </div>
+      <%= simple_format(event.description, class: 'subtitle is-6') %>
       <div class='buttons'>
         <%= link_to 'Event page', user_event_path(current_user, event), class: 'button is-link is-outlined'%>
         <%= link_to 'Edit event', edit_user_event_path(current_user, event), class: 'button is-info is-outlined' %>

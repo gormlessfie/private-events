@@ -1,0 +1,18 @@
+<div class='container box'>
+  <section class='section'>
+    <h1 class='title is-1'><%= @event.title %></h1>
+    <h2 class='subtitle is-4'>created by: <%= @event.creator.username %></h2>
+    <%= @event.event_date %>
+  </section>
+  <section class='section'>
+    <%= simple_format(@event.description, class: 'subtitle is-6') %>
+  </section>
+
+  <% if current_user == @event.creator %>
+    <section class='section buttons'>
+      <%= link_to 'Edit event', edit_user_event_path(@event.creator, @event),
+                                class: 'button is-info is-outlined' %>
+    </section>
+  <% end %>
+</div>
+
