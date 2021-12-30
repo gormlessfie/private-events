@@ -9,6 +9,8 @@
   <% end %>
 
   <div class='navbar-end'>
+    <p class='navbar-item'>signed in as: <%= current_user.username %></p>
+
     <div class='navbar-item buttons'>
       <% if user_signed_in? %>
         <%= link_to 'Profile', user_path(current_user), class: 'button is-info is-outlined' %>
