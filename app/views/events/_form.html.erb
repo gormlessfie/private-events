@@ -1,0 +1,17 @@
+<div class='container'>
+  <%= form_with model: [@user, @event] do |form| %>
+    <div class='block'>
+      <%= form.label :title %><br>
+      <%= form.text_field :title, class: 'input is-large' %>
+    </div>
+
+    <div class='block'>
+      <%= form.label :description%>
+      <%= form.text_area :description, class: 'textarea is-medium' %>
+    </div>
+
+    <div class='block buttons'>
+      <%= form.submit 'Create Event', class: 'button is-primary' %>
+    </div>
+  <% end %>
+</div>

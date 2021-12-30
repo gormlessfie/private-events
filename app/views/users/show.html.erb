@@ -10,9 +10,11 @@
       <div class='box'>
         <p class='subtitle is-6'><%= event.description %></p>
       </div>
-      <div class='box buttons'>
-        <%= link_to 'Edit event', root_path, class: 'button is-info is-outlined' %>
-        <%= link_to 'Delete event', root_path, class: 'button is-danger is-outlined' %>
+      <div class='buttons'>
+        <%= link_to 'Edit event', edit_user_event_path(current_user, event), class: 'button is-info is-outlined' %>
+        <%= link_to 'Delete event', user_event_path(current_user, event), method: :delete,
+            data: { confirm: 'Are you sure?' }, class: 'button is-danger is-outlined' %>
+      </div>
     </div>
   <% end %>
 </div>

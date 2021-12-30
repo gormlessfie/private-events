@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: [ :new, :create ]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @events = Event.all.includes(:creator)
@@ -25,6 +25,30 @@ class EventsController < ApplicationController
       flash[:alert] = 'Event cannot be created.'
       render :new
     end
+  end
+
+  def edit
+    @user = current_user
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+
+    if @event.update(event_params)
+      flash[:notice] = 'Event updated.'
+      redirect_to user_event_path(@event.creator, @event)
+    else
+      render :edit
+    end
+
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+  
+    redirect_to user_path(current_user)
   end
 
   private
