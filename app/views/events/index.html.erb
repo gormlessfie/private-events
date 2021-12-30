@@ -1,12 +1,13 @@
 <section class='section'>
   <div class='container'>
-    <h2 class='title is-3'>List of all upcoming events</h2>
+    <h1 class='title is-3'>List of all upcoming events</h2>
     <% @events.each do |event| %>
       <div class='box'>
-        <h3 class='title is-2'><%= event.title %></h3>
-        <h4 class='subtitle is-6'>Creator: <%= event.creator.username %></h4>
+        <h2 class='title is-2'><%= event.title %></h3>
+        <h3 class='subtitle is-6'>Creator: <%= event.creator.username %></h4>
         <p class='subtitle is-4'><%= event.description %></p>
-        <%= link_to 'Event page', user_event_path(event.creator, event), class: 'button is-link is-outlined is-small' %>
+        <%= link_to 'Event page', user_event_path(event.creator, event),
+                                  class: 'button is-link is-outlined is-small' %>
       </div>
     <% end%>
   </div>
