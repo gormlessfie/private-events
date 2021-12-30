@@ -2,8 +2,9 @@
   <section class='section'>
     <h1 class='title is-1'><%= @event.title %></h1>
     <h2 class='subtitle is-4'>created by: <%= @event.creator.username %></h2>
-    <%= @event.event_date %>
+    <h3 class='subtitle is-4'>Event date: <%= @event.event_date %></h3>
   </section>
+
   <section class='section'>
     <%= simple_format(@event.description, class: 'subtitle is-6') %>
   </section>
