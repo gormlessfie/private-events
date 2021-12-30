@@ -2,6 +2,11 @@
   <div class='navbar-brand'>
     <%= link_to 'Homepage', root_path, class:'navbar-item title is-3' %>
   </div>
+  <% if user_signed_in? %>
+    <div class='navbar-start navbar-item'>
+      <%= link_to 'Create Event', new_user_event_path(current_user), class: 'button is-primary' %>
+    </div>
+  <% end %>
 
   <div class='navbar-end'>
     <div class='navbar-item buttons'>
