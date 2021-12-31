@@ -6,11 +6,18 @@ class UsersEventsController < ApplicationController
     @invitee = User.find_by('username = ?', users_event_params[:username])
     @invitation = @event.users_events.build(event: @event, user: @invitee)
 
+    already_invited = UsersEvent.exists?(user: @invitee, event: @event)
+  
+    if already_invited
+      flash[:notice] = "#{@invitee.username} is already attending."
+      return redirect_to user_event_path(@event.creator, @event)
+    end
+
     if @invitation.save
       flash[:notice] = 'Invitation sent!'
       redirect_to user_event_path(@event.creator, @event)
     else
-      flash[:warning] = 'User does not exist!'
+      flash[:warning] = "#{users_event_params[:username]} does not exist!"
       redirect_to user_event_path(@event.creator, @event)
     end
   end
