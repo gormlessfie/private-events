@@ -3,8 +3,13 @@ Rails.application.routes.draw do
                                     sessions: 'users/sessions' }
 
   root 'events#index'
+  get '/users/', to: 'events#index'
+
+  
+  resources :events, only: [ :index ]
+  resources :users_events, only: [ :new, :create, :destroy ]
 
   resources :users, only: [ :show ] do
-    resources :events
+    resources :events, except: [ :index ]
   end
 end
