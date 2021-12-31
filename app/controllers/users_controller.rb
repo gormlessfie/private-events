@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @events = current_user.events.includes(:creator)
+    @user = User.find(params[:id])
+    @events = @user.events.includes(:creator)
   end
 end
