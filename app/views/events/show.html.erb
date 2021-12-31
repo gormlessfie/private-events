@@ -30,5 +30,14 @@
       <%= link_to attendee.username, user_path(attendee), class: 'button is-info is-rounded' %>
     <% end %>
   </section>
+
+  <section class='section'>
+    <%= form_with model: [@event, @event.users_events.build], url: users_events_path do |form| %>
+      <div class='columns control'>
+        <%= form.text_field :username, class: 'column input is-3 mr-1' %>
+        <%= form.submit 'Invite user', class:'button is-primary is-outlined' %>
+      </div>
+    <% end %>
+  </section>
 </div>
 
