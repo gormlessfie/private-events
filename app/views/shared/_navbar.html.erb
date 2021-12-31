@@ -9,7 +9,9 @@
   <% end %>
 
   <div class='navbar-end'>
-    <p class='navbar-item'>signed in as: <%= current_user.username %></p>
+    <% if user_signed_in? %>
+      <p class='navbar-item'>signed in as: <%= current_user.username %></p>
+    <% end %>
 
     <div class='navbar-item buttons'>
       <% if user_signed_in? %>

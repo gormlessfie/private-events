@@ -17,3 +17,15 @@
   <% end %>
 </div>
 
+<div class='container box'>
+  <section class='section'>
+    <h1 class='title is-3'>List of attendees</h1>
+  </section>
+
+  <section>
+    <% @attendees.each do |attendee| %>
+      <li><%= attendee.username %></li>
+    <% end %>
+  </section>
+</div>
+

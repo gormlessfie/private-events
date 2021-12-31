@@ -3,4 +3,7 @@ class Event < ApplicationRecord
 
   validates :title, presence: true, length: { in: 6..64 }
   validates :event_date, presence: true
+
+  has_many :users_events
+  has_many :attendees, through: :users_events, source: :user
 end
