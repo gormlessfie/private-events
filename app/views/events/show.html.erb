@@ -12,7 +12,16 @@
   
     <section class='section buttons'>
       <% if user_signed_in? && @event.creator != current_user %>
-        <%= link_to 'Join event', new_users_event_path, class: 'button is-primary' %>
+        <%= form_with model: @invitation do |form| %>
+          <%= form.hidden_field :event_id, value: @event.id %>
+          <%= form.hidden_field :username, value: current_user.username %>
+          <%= form.submit 'Join event', class: 'button is-primary' %>
+        <% end %>
+      <% else %>
+        <div class='column'>
+          <button class='button is-danger' disabled>Join Event</button>
+          <p class='help is-danger'>You must be logged in!</p>
+        </div>
       <% end %>
 
       <% if current_user == @event.creator %>
