@@ -20,12 +20,11 @@
 <div class='container box'>
   <section class='section'>
     <h1 class='title is-3'>List of attendees</h1>
-  </section>
 
-  <section>
     <% @attendees.each do |attendee| %>
-      <li><%= attendee.username %></li>
+      <%= link_to attendee.username, user_path(attendee), class: 'button is-info is-rounded' %>
     <% end %>
+
   </section>
 </div>
 
