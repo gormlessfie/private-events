@@ -27,7 +27,10 @@
     <h1 class='title is-3'>List of attendees</h1>
 
     <% @attendees.each do |attendee| %>
-      <%= link_to attendee.username, user_path(attendee), class: 'button is-info is-rounded' %>
+        <div class='container button is-info is-rounded is-1'>
+          <%= link_to attendee.username, user_path(attendee), class:'has-text-white is-size-6' %>
+          <button class='ml-3 delete is-medium'>
+        </div>
     <% end %>
   </section>
 
