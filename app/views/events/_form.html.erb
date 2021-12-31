@@ -36,12 +36,6 @@
     <div class='field buttons'>
       <div class='control is-grouped'>
         <%= form.submit type.concat(' Event'), class: 'button is-primary' %>
-
-        <% if type == 'Edit' && current_user == @event.creator %>
-          <%= link_to 'Delete event', user_event_path(@user, @event), method: :delete,
-              data: { confirm: 'Are you sure?' }, class: 'button is-danger is-outlined' %>
-        <% end %>
-
       </div>
     </div>
   <% end %>

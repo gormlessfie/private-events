@@ -9,12 +9,17 @@
     <%= simple_format(@event.description, class: 'subtitle is-6') %>
   </section>
 
-  <% if current_user == @event.creator %>
+  
     <section class='section buttons'>
-      <%= link_to 'Edit event', edit_user_event_path(@event.creator, @event),
-                                class: 'button is-info is-outlined' %>
+      <% if user_signed_in? && @event.creator != current_user %>
+        <%= link_to 'Join event', new_users_event_path, class: 'button is-primary' %>
+      <% end %>
+
+      <% if current_user == @event.creator %>
+        <%= link_to 'Edit event', edit_user_event_path(@event.creator, @event),
+                                  class: 'button is-info is-outlined' %>
+      <% end %>
     </section>
-  <% end %>
 </div>
 
 <div class='container box'>
