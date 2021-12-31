@@ -17,16 +17,14 @@
           <%= form.hidden_field :username, value: current_user.username %>
           <%= form.submit 'Join event', class: 'button is-primary' %>
         <% end %>
+      <% elsif %>
+        <%= link_to 'Edit event', edit_user_event_path(@event.creator, @event),
+                                  class: 'button is-info is-outlined' %>
       <% else %>
         <div class='column'>
           <button class='button is-danger' disabled>Join Event</button>
           <p class='help is-danger'>You must be logged in!</p>
         </div>
-      <% end %>
-
-      <% if current_user == @event.creator %>
-        <%= link_to 'Edit event', edit_user_event_path(@event.creator, @event),
-                                  class: 'button is-info is-outlined' %>
       <% end %>
     </section>
 </div>
@@ -36,10 +34,13 @@
     <h1 class='title is-3'>List of attendees</h1>
 
     <% @attendees.each do |attendee| %>
-        <div class='container button is-info is-rounded is-1'>
-          <%= link_to attendee.username, user_path(attendee), class:'has-text-white is-size-6' %>
-          <button class='ml-3 delete is-medium'>
-        </div>
+      <div class='container button is-info is-rounded is-1'>
+        <%= link_to attendee.username, user_path(attendee), class:'has-text-white is-size-6' %>
+        <%= link_to '', users_event_path(attendee.users_events.find_by('event_id = ?', @event.id)),
+                        method: :delete,
+                        data: { confirm: 'Remove this user from attending?' },
+                        class: 'ml-3 delete is-medium' %>
+      </div>
     <% end %>
   </section>
 
