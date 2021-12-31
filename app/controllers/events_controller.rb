@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id]).includes(:attendees)
+    @event = Event.find(params[:id])
     @attendees = @event.attendees
     @invitation = @event.users_events.build
   end
