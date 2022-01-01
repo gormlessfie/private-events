@@ -2,7 +2,7 @@
 <section class='section'>
   <div class='container'>
     <h1 class='title is-3'>List of all upcoming events</h1>
-    <% @events.each do |event| %>
+    <% @active_events.each do |event| %>
       <div class='box'>
         <h2 class='title is-2'><%= event.title %></h2>
 

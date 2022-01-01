@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @events = Event.all.includes(:creator)
+    @active_events = Event.all.includes(:creator)
     @old_events = Event.where("event_date < ?", DateTime.now)
     @close_events = Event.where(event_date: DateTime.now..DateTime.now + 30.days)
   end
