@@ -26,7 +26,8 @@
     </div>
 
     <div class='field'>
-      <%= form.label :location %>
+      <%= form.label :location, 'Location (64 characters max)' %>
+
       <div class='control'>
         <%= form.text_field :location, class: 'column is-one-third input is-normal is-info',
                              placeholder: 'Enter a location for the event'%>
