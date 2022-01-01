@@ -8,7 +8,7 @@
 
   <%= form_with model: [@user, @event] do |form| %>
     <div class='field'>
-      <%= form.label :title %><br>
+      <%= form.label :title, 'Title (64 characters max)' %><br>
 
       <div class='control'>
         <%= form.text_field :title, class: 'input is-large is-info',
