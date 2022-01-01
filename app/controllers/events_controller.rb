@@ -3,6 +3,8 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all.includes(:creator)
+    @old_events = Event.where("event_date < ?", DateTime.now)
+    @close_events = Event.where(event_date: DateTime.now..DateTime.now + 30.days)
   end
 
   def show
