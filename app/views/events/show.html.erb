@@ -15,7 +15,12 @@
         <%= form_with model: @invitation do |form| %>
           <%= form.hidden_field :event_id, value: @event.id %>
           <%= form.hidden_field :username, value: current_user.username %>
-          <%= form.submit 'Join event', class: 'button is-primary' %>
+
+          <% if @already_invited %>
+            <button class='button is-success' disabled>Event joined</button>
+          <% else %>
+            <%= form.submit 'Join event', class: 'button is-primary' %>
+          <% end %>
         <% end %>
       <% elsif current_user == @event.creator %>
         <%= link_to 'Edit event', edit_user_event_path(@event.creator, @event),
@@ -36,7 +41,7 @@
     <% @attendees.each do |attendee| %>
       <div class='container button is-info is-rounded is-1'>
         <%= link_to attendee.username, user_path(attendee), class:'has-text-white is-size-6' %>
-        <% if current_user == @event.creator %>
+        <% if current_user == @event.creator || current_user == attendee %>
           <%= link_to '', users_event_path(attendee.users_events.find_by('event_id = ?', @event.id)),
                           method: :delete,
                           data: { confirm: 'Remove this user from attending?' },

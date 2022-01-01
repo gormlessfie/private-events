@@ -9,6 +9,9 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @attendees = @event.attendees.includes(:users_events)
     @invitation = @event.users_events.build
+    
+    @already_invited = UsersEvent.exists?(event: @event, user: current_user)
+
   end
 
   def new
