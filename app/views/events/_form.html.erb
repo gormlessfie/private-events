@@ -17,11 +17,19 @@
     </div>
 
     <div class='field'>
-      <%= form.label :description%>
+      <%= form.label :description %>
 
       <div class='control'>
         <%= form.text_area :description, class: 'textarea is-normal is-info',
                             placeholder: 'Enter a description for the event' %>
+      </div>
+    </div>
+
+    <div class='field'>
+      <%= form.label :location %>
+      <div class='control'>
+        <%= form.text_field :location, class: 'column is-one-third input is-normal is-info',
+                             placeholder: 'Enter a location for the event'%>
       </div>
     </div>
 
