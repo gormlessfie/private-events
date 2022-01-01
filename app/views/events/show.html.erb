@@ -25,6 +25,9 @@
       <% elsif current_user == @event.creator %>
         <%= link_to 'Edit event', edit_user_event_path(@event.creator, @event),
                                   class: 'button is-info is-outlined' %>
+        <%= link_to 'Delete event', user_event_path(@event), method: :delete,
+                                    data: { confirm: 'Are you sure?'},
+                                    class: 'button is-danger' %>
       <% else %>
         <div class='column'>
           <button class='button is-danger' disabled>Join Event</button>
