@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   root 'events#index'
   get '/users/', to: 'events#index'
-
   
   resources :events, only: [ :index ]
   resources :users_events, only: [ :new, :create, :destroy ]

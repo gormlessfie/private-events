@@ -17,7 +17,7 @@
           <%= form.hidden_field :username, value: current_user.username %>
           <%= form.submit 'Join event', class: 'button is-primary' %>
         <% end %>
-      <% elsif %>
+      <% elsif current_user == @event.creator %>
         <%= link_to 'Edit event', edit_user_event_path(@event.creator, @event),
                                   class: 'button is-info is-outlined' %>
       <% else %>
