@@ -5,15 +5,26 @@
 </section>
 
 <div class='container box is-max-widescreen'>
-  <h1 class='title is-1'><%= type %> Event</h1>
+  <h1 class='title is-1'>
+  <% case type %>
+  <% when 'Edit' %>
+    <i class='fa fa-edit'></i>
+  <% when 'Create' %>
+    <i class='fa fa-sticky-note'></i>
+  <% end %>
+  <%= type %> Event
+  </h1>
 
   <%= form_with model: [:user, @event] do |form| %>
     <div class='field'>
       <%= form.label :title, 'Title (64 characters max)' %><br>
 
-      <div class='control'>
+      <div class='control has-icons-left'>
         <%= form.text_field :title, class: 'input is-large is-info',
                              placeholder: 'Enter a title for the event' %>
+        <span class='icon is-left'>
+          <i class="fas fa-pencil-alt"></i>
+        </span>
       </div>
     </div>
 
@@ -29,17 +40,24 @@
     <div class='field'>
       <%= form.label :location, 'Location (64 characters max)' %>
 
-      <div class='control'>
+      <div class='control has-icons-left'>
         <%= form.text_field :location, class: 'column is-one-third input is-normal is-info',
                              placeholder: 'Enter a location for the event'%>
+        <span class='icon is-left'>
+          <i class="fas fa-warehouse"></i>
+        </span>
       </div>
     </div>
 
     <div class='field'>
       <%= form.label :event_date %><br>
 
-      <div class='control'>
+      <div class='control has-icons-left'>
         <%= form.datetime_field :event_date, class: 'column is-one-third input is-medium is-info' %>
+
+        <span class='icon is-left'>
+          <i class="fas fa-calendar-alt"></i>
+        </span>
       </div>
     </div>
 
