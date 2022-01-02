@@ -12,7 +12,10 @@
           Event date: <%= event.event_date.strftime("%m/%d/%Y at %I:%M%p") %>
         </h4>
 
-        <%= simple_format(event.description, class: 'subtitle is-6') %><br>
+        <p class='subtitle is-6'>
+          <%= event.description.slice(0, 300).concat('...') %>
+        <p><br>
+
         <h3>created by: <%= event.creator.username %></h3><br>
 
         <%= link_to 'Event page', user_event_path(event.creator, event),
