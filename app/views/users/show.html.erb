@@ -1,40 +1,32 @@
 <section class='section'>
-  <% if current_user == @user %>
-    <h1 class='container title is-1'>Your Events</h1>
-  <% else %>
-    <h1 class='container title is-1'><%= @user.username %>'s Events</h1>
-  <% end %>
-</section>
-
-<div class='container'>
-  <% if @events.empty? %>
-    <div class='column box'>
-      <h2 class='title is-5'><%= @user.username %> has no events.</h2>
-    </div>
-  <% else %>
-    <% @events.each do |event| %>
-      <div class='columns box'>
-        <div class='column'>
-          <h2 class='title is-5'><%= event.title %></h2>
-          <h3 class='subtitle is-5'>
-            Event Location: <%= event.location %><br>
-            Event date: <strong><%= event.event_date.strftime("%m/%d/%Y at %I:%M%p") %></strong>
-          </h3>
+  <div class='container'>
+    <% if current_user == @user %>
+      <h1 class='container title is-1'>Your Attending Events</h1>
+      <% if @attending_events.empty? %>
+        <div class='column box'>
+          <h2 class='title is-5'><%= @user.username %> has no attending events.</h2>
         </div>
-
-        <div class='column is-4 buttons'>
-          <%= link_to 'Event page', user_event_path(@user, event), class: 'button is-link is-outlined'%>
-          
-          <% if current_user == @user %>
-            <%= link_to edit_user_event_path(current_user, event), class: 'button is-info is-outlined' do %>
-              <%= icon('far', 'edit') %>&nbsp;&nbsp;Edit Event
-            <% end %>
-
-            <%= link_to 'Delete event', user_event_path(current_user, event), method: :delete,
-                data: { confirm: 'Are you sure?' }, class: 'button is-danger is-outlined' %>
-          <% end %>
+      <% else %>
+        <%= render 'list_events', event_list: @attending_events %>
+      <% end %>
+      <h1 class='container title is-1'>Your Events</h1>
+      <% if @events.empty? %>
+        <div class='column box'>
+          <h2 class='title is-5'><%= @user.username %> has no events.</h2>
         </div>
-      </div>
+      <% else %>
+        <%= render 'list_events', event_list: @events %>
+      <% end %>
+
+    <% else %>
+      <% if @events.empty? %>
+        <div class='column box'>
+          <h2 class='title is-5'><%= @user.username %> has no events.</h2>
+        </div>
+      <% else %>
+        <h1 class='container title is-1'><%= @user.username %>'s Events</h1>
+        <%= render 'list_events', event_list: @public_events %>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+</section>

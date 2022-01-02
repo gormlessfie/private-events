@@ -1,0 +1,24 @@
+<% event_list.each do |event| %>
+  <div class='columns box'>
+    <div class='column'>
+      <h2 class='title is-5'><%= event.title %></h2>
+      <h3 class='subtitle is-5'>
+        Event Location: <%= event.location %><br>
+        Event date: <strong><%= event.event_date.strftime("%m/%d/%Y at %I:%M%p") %></strong>
+      </h3>
+    </div>
+
+    <div class='column is-4 buttons'>
+      <%= link_to 'Event page', user_event_path(@user, event), class: 'button is-link is-outlined'%>
+      
+      <% if current_user == event.creator %>
+        <%= link_to edit_user_event_path(current_user, event), class: 'button is-info is-outlined' do %>
+          <%= icon('far', 'edit') %>&nbsp;&nbsp;Edit Event
+        <% end %>
+
+        <%= link_to 'Delete event', user_event_path(current_user, event), method: :delete,
+            data: { confirm: 'Are you sure?' }, class: 'button is-danger is-outlined' %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
