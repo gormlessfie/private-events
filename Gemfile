@@ -22,7 +22,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'bulma-rails', '~> 0.9.2'
 gem 'validates_timeliness', '~> 6.0.0.beta2'
-
+gem 'font-awesome-sass', '~> 5.15.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
