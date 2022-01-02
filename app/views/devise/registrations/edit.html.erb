@@ -6,13 +6,22 @@
 
     <div class='field'>
       <%= f.label :username %><br>
-      <%= f.text_field :username, autofocus: true, autocomplete: 'username',
-                                  placeholder: 'Username', class: 'input' %>
+
+      <div class='control has-icons-left'>
+        <%= f.text_field :username, autofocus: true, autocomplete: 'username',
+                                    placeholder: 'Username', class: 'input' %>
+
+        <span class='icon is-left'><%= icon('fas', 'user') %></span>
+      </div>
     </div>
 
     <div class="field">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autocomplete: "email", placeholder: 'Email', class: 'input'  %>
+      <div class='control has-icons-left'>
+        <%= f.email_field :email, autocomplete: "email", placeholder: 'Email', class: 'input'  %>
+
+        <span class='icon is-left'><%= icon('fas', 'envelope') %></span>
+      </div>
     </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -21,26 +30,38 @@
 
     <div class="field">
       <%= f.label 'New Password' %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, autocomplete: "new-password",
-                                      placeholder: 'New Password', class: 'input' %>
-      <% if @minimum_password_length %>
-        <br />
-        <em><%= @minimum_password_length %> characters minimum</em>
-      <% end %>
+
+      <div class='control has-icons-left'>
+        <%= f.password_field :password, autocomplete: "new-password",
+                                        placeholder: 'New Password', class: 'input' %>
+
+        <span class='icon is-left'><%= icon('fas', 'lock') %></span>
+      
+        <% if @minimum_password_length %>
+          <br />
+          <em><%= @minimum_password_length %> characters minimum</em>
+        <% end %>
+      </div>
     </div>
 
     <div class="field">
       <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password",
-                                                  placeholder: 'Re-enter password',
-                                                  class: 'input' %>
-    </div>
+      <div class='control has-icons-left'>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",
+                                                    placeholder: 'Re-enter password',
+                                                    class: 'input' %>
+        <span class='icon is-left'><%= icon('fas', 'lock') %></span>
+      </div>
+    </div><br>
 
     <div class="field">
       <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password, autocomplete: "current-password",
+      <div class='control has-icons-left'>
+        <%= f.password_field :current_password, autocomplete: "current-password",
                                               placeholder: 'Current Password',
                                               class: 'input' %>
+        <span class='icon is-left'><%= icon('fas', 'lock') %></span>
+      </div>
     </div>
 
     <div class="actions">

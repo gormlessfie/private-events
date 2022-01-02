@@ -26,7 +26,10 @@
           <%= link_to 'Event page', user_event_path(@user, event), class: 'button is-link is-outlined'%>
           
           <% if current_user == @user %>
-            <%= link_to 'Edit event', edit_user_event_path(current_user, event), class: 'button is-info is-outlined' %>
+            <%= link_to edit_user_event_path(current_user, event), class: 'button is-info is-outlined' do %>
+              <%= icon('far', 'edit') %>&nbsp;&nbsp;Edit Event
+            <% end %>
+
             <%= link_to 'Delete event', user_event_path(current_user, event), method: :delete,
                 data: { confirm: 'Are you sure?' }, class: 'button is-danger is-outlined' %>
           <% end %>

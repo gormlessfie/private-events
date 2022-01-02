@@ -7,9 +7,9 @@
 
       <div class='control has-icons-left'>
         <%= f.text_field :username, autofocus: true, autocomplete: "username",
-                                    placeholder: 'Username', class: 'input is-medium' %>
+                                    placeholder: 'Username', class: 'input' %>
         <span class='icon is-left'>
-          <i class='fa fa-envelope'></i>
+          <%= icon('fas', 'user') %>
         </span>
       </div>
 
@@ -20,9 +20,9 @@
 
       <div class='control has-icons-left'>
         <%= f.password_field :password, autocomplete: "current-password",
-                                        placeholder: 'Password', class: 'input is-medium' %>
+                                        placeholder: 'Password', class: 'input' %>
         <span class='icon is-left'>
-          <i class='fa fa-lock is-medium'></i>
+          <%= icon('fas', 'lock') %>
         </span>
       </div>
     </div>

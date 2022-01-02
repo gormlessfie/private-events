@@ -8,9 +8,9 @@
   <h1 class='title is-1'>
   <% case type %>
   <% when 'Edit' %>
-    <i class='fa fa-edit'></i>
+    <%= icon('fas', 'edit') %>
   <% when 'Create' %>
-    <i class='fa fa-sticky-note'></i>
+    <%= icon('far', 'sticky-note') %>
   <% end %>
   <%= type %> Event
   </h1>
@@ -22,9 +22,8 @@
       <div class='control has-icons-left'>
         <%= form.text_field :title, class: 'input is-large is-info',
                              placeholder: 'Enter a title for the event' %>
-        <span class='icon is-left'>
-          <i class="fas fa-pencil-alt"></i>
-        </span>
+
+        <span class='icon is-left'><%= icon('fas', 'pencil-alt') %></span>
       </div>
     </div>
 
@@ -43,9 +42,7 @@
       <div class='control has-icons-left'>
         <%= form.text_field :location, class: 'column is-one-third input is-normal is-info',
                              placeholder: 'Enter a location for the event'%>
-        <span class='icon is-left'>
-          <i class="fas fa-warehouse"></i>
-        </span>
+        <span class='icon is-left'><%= icon('fas', 'warehouse') %></i></span>
       </div>
     </div>
 
@@ -55,9 +52,7 @@
       <div class='control has-icons-left'>
         <%= form.datetime_field :event_date, class: 'column is-one-third input is-medium is-info' %>
 
-        <span class='icon is-left'>
-          <i class="fas fa-calendar-alt"></i>
-        </span>
+        <span class='icon is-left'><%= icon('fas', 'calendar-alt') %></i></span>
       </div>
     </div>
 

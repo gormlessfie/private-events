@@ -4,7 +4,9 @@
   </div>
   <% if user_signed_in? %>
     <div class='navbar-start navbar-item'>
-      <%= link_to 'Create Event', new_user_event_path(current_user), class: 'button is-primary' %>
+      <%= link_to new_user_event_path(current_user), class: 'button is-primary' do %>
+      <%= icon('far', 'sticky-note') %>&nbsp;&nbsp;Create Event
+      <% end %>
     </div>
   <% end %>
 
@@ -15,7 +17,9 @@
 
     <div class='navbar-item buttons'>
       <% if user_signed_in? %>
-        <%= link_to 'Profile', user_path(current_user), class: 'button is-info is-outlined' %>
+        <%= link_to user_path(current_user), class: 'button is-info is-outlined' do %>
+          <%= icon('fas', 'user') %>&nbsp;&nbsp;Profile
+        <% end %>
         <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'button is-danger' %>
       <% else %>
         <%= link_to 'Sign up', new_user_registration_path, class: 'button is-primary' %>
