@@ -37,6 +37,14 @@
     </div>
 
     <div class='field'>
+      <%= form.label :status %><br>
+
+      <div class='control select'>
+        <%= form.select :status, [['public'], ['private']] %>
+      </div>
+    </div>
+
+    <div class='field'>
       <%= form.label :location, 'Location (64 characters max)' %>
 
       <div class='control has-icons-left'>
