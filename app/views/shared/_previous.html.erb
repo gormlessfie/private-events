@@ -1,0 +1,12 @@
+<% case @type %>
+<% when 'active' %>
+  <%= link_to 'Previous', events_path(page: @page - 1),
+                          class: 'column button is-light' %>
+<% when 'close' %>
+  <%= link_to 'Previous', events_close_path(page: @page - 1),
+                          class: 'column button is-light' %>
+<% when 'old' %>
+  <%= link_to 'Previous', events_old_path(page: @page - 1),
+                          class: 'column button is-light' %>
+<% end %>
+  

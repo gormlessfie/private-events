@@ -1,0 +1,35 @@
+<% unless @events.empty? %>
+
+  <div class='container box'>
+    <div class='columns'>
+      <span class='column'></span>
+
+      <span class='column'>
+        <div class='columns'>
+          <% if @page > 0 %>
+            <%= render 'shared/previous' %>
+          <% else %>
+            <button class='column button is-light', disabled>Previous</button>
+          <% end %>
+
+          <span class='column'>
+            <span class='columns'>
+              <span class='column is-one-fifth'></span>
+              <span class='column is-three-fifth'><p>Page: <%= @page %></p></span>
+              <span class='column is-one-fifth'></span>
+            </span>
+          </span>
+
+          <% unless @last_page %>
+            <%= render 'shared/next' %>
+          <% else %>
+            <button class='column button is-light', disabled>Next</button>
+          <% end %>
+        </div>
+      </span>
+
+      <span class='column'></span>
+    </div>
+  </div>
+
+<% end %>
