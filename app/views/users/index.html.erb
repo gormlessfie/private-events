@@ -1,0 +1,11 @@
+<section class='section'>
+  <div class='container box'>
+    <h1 class='title is-1'>List of all users</h1>
+
+    <ul>
+      <% @users.each do |user| %>
+        <li><strong>> <%= user.username %></strong></li>
+      <% end %>
+    </ul>
+  </div>
+</section>

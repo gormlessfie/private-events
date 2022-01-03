@@ -3,7 +3,6 @@ Rails.application.routes.draw do
                                     sessions: 'users/sessions' }
 
   root 'events#index'
-  get '/users/', to: 'events#index'
 
   get '/events/old', to: 'old_events#index'
   get '/events/close', to: 'close_events#index'
@@ -11,7 +10,7 @@ Rails.application.routes.draw do
   resources :events, only: [ :index ]
   resources :users_events, only: [ :new, :create, :destroy ]
 
-  resources :users, only: [ :show ] do
+  resources :users, only: [ :index, :show ] do
     resources :events, except: [ :index ]
   end
 end
