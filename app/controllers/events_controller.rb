@@ -1,19 +1,17 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
-  EVENTS_PER_PAGE = 2
-
   def index
     @active_page = params.fetch(:active_page, 0).to_i
     @old_page = params.fetch(:old_page, 0).to_i
     @close_page = params.fetch(:close_page, 0).to_i
   
-    @active_events = Event.offset(@active_page * EVENTS_PER_PAGE).limit(EVENTS_PER_PAGE)
+    @active_events = Event.page_limit(@active_page)
                           .includes(:creator).where(status: 'public')     
-    @old_events = Event.offset(@old_page * EVENTS_PER_PAGE).limit(EVENTS_PER_PAGE)
-                       .where("event_date < ?", DateTime.now)              
-    @close_events = Event.offset(@close_page * EVENTS_PER_PAGE).limit(EVENTS_PER_PAGE)
-                         .where(event_date: DateTime.now..DateTime.now + 30.days)
+    @old_events = Event.page_limit(@old_page)
+                       .includes(:creator).where("event_date < ?", DateTime.now)              
+    @close_events = Event.page_limit(@close_page)
+                         .includes(:creator).where(event_date: DateTime.now..DateTime.now + 30.days)
 
     @close_last_page = check_last_page(@close_events, 'close')
     @old_last_page = check_last_page(@old_events, 'old')
