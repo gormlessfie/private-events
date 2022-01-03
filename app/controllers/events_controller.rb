@@ -5,28 +5,21 @@ class EventsController < ApplicationController
 
   def index
     @active_page = params.fetch(:active_page, 0).to_i
-    
-
     @old_page = params.fetch(:old_page, 0).to_i
-    
-
     @close_page = params.fetch(:close_page, 0).to_i
-    @close_last_page = check_last_page(@close_events, 'close')
+  
 
     @active_events = Event.offset(@active_page * EVENTS_PER_PAGE).limit(EVENTS_PER_PAGE)
-                          .includes(:creator).where(status: 'public')
-               
+                          .includes(:creator).where(status: 'public')     
     @active_last_page = check_last_page(@active_events, 'active')
 
     @old_events = Event.offset(@old_page * EVENTS_PER_PAGE).limit(EVENTS_PER_PAGE)
                        .where("event_date < ?", DateTime.now)
-
     @old_last_page = check_last_page(@old_events, 'old')
 
     @close_events = Event.offset(@close_page * EVENTS_PER_PAGE).limit(EVENTS_PER_PAGE)
                          .where(event_date: DateTime.now..DateTime.now + 30.days)
-
-    @close_page = params.fetch(:close_page, 0).to_i
+    @close_last_page = check_last_page(@close_events, 'close')
   end
 
   def show
