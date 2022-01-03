@@ -1,22 +1,3 @@
-
-<section class='section'>
-  <div class='container'>
-    <h1 class='title is-3'>List of close events</h1>
-    <%= render 'display_events', list_events: @close_events %>
-  </div>
-
-  <%= render partial: 'pagination', locals: { events: @close_events,
-                                              action_page: @close_page,
-                                              action_page_type: :close_page,
-                                              second_page: @active_page,
-                                              second_page_type: :active_page,
-                                              third_page: @old_page,
-                                              third_page_type: :old_page,
-                                              action_status: @close_last_page,
-                                              second_status: @active_last_page,
-                                              third_status: @old_last_page } %>
-</section>
-
 <section class='section'>
   <div class='container'>
     <h1 class='title is-3'>List of future events</h1>
@@ -33,23 +14,4 @@
                                               action_status: @active_last_page,
                                               second_status: @close_last_page,
                                               third_status: @old_page } %>
-</section>
-
-
-<section class='section'>
-  <div class='container'>
-    <h1 class='title is-3'>List of old events</h1>
-    <%= render 'display_events', list_events: @old_events %>
-  </div>
-
-  <%= render partial: 'pagination', locals: { events: @old_events,
-                                              action_page: @old_page,
-                                              action_page_type: :old_page,
-                                              second_page: @close_page,
-                                              second_page_type: :close_page,
-                                              third_page: @active_page,
-                                              third_page_type: :active_page,
-                                              action_status: @old_last_page,
-                                              second_status: @close_last_page,
-                                              third_status: @active_last_page } %>
 </section>
