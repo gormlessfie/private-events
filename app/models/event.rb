@@ -4,6 +4,8 @@ class Event < ApplicationRecord
   scope :past_events, -> { where('event_date < ?', DateTime.now) }
   scope :page_limit, -> (page) { offset(page * EVENTS_PER_PAGE)
                          .limit(EVENTS_PER_PAGE) }
+  scope :close_events, -> { where(event_date: DateTime.now..DateTime.now + 30.days) }
+  scope :active_public
 
   belongs_to :creator, class_name: 'User', foreign_key: 'user_id'
 

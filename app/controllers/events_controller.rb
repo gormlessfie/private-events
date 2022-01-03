@@ -8,10 +8,8 @@ class EventsController < ApplicationController
   
     @active_events = Event.page_limit(@active_page)
                           .includes(:creator).where(status: 'public')     
-    @old_events = Event.page_limit(@old_page)
-                       .includes(:creator).where("event_date < ?", DateTime.now)              
-    @close_events = Event.page_limit(@close_page)
-                         .includes(:creator).where(event_date: DateTime.now..DateTime.now + 30.days)
+    @old_events = Event.page_limit(@old_page).past_events.includes(:creator).             
+    @close_events = Event.page_limit(@close_page).close_events.includes(:creator)
 
     @close_last_page = check_last_page(@close_events, 'close')
     @old_last_page = check_last_page(@old_events, 'old')
@@ -80,7 +78,7 @@ class EventsController < ApplicationController
 
     case type_event
     when 'close'
-      last_event = Event.where(event_date: DateTime.now..DateTime.now + 30.days).last
+      last_event = Event.close_events.last
     when 'active'
       last_event = Event.where(status: 'public').last
     when 'old'
