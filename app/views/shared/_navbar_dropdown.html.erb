@@ -1,0 +1,8 @@
+<div class='navbar-item has-dropdown is-hoverable '>
+  <%= link_to 'Events', events_path, class:'navbar-link' %>
+
+  <div class='navbar-dropdown has-background-dark'>
+    <%= link_to 'Close events', events_close_path, class: 'navbar-item has-text-white has-background-dark' %>
+    <%= link_to 'Old events', events_old_path, class: 'navbar-item has-text-white has-background-dark' %>
+  </div>
+</div>

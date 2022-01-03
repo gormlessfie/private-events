@@ -8,10 +8,9 @@
       <%= link_to new_user_event_path(current_user), class: 'button is-primary' do %>
       <%= icon('far', 'sticky-note') %>&nbsp;&nbsp;Create Event
       <% end %>
-
-      <div class='navbar-item has-dropdown'>
-        <%= link_to 'Close events', events_close_path %>
-        <%= link_to 'Old events', events_old_path %>
+      
+      <div class='navbar-item'>
+        <%= render 'shared/navbar_dropdown' %>
       </div>
     </div>
   <% end %>
