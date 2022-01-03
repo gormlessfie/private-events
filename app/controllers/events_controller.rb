@@ -2,9 +2,10 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @active_page = params.fetch(:active_page, 0).to_i
-    @active_events = Event.page_limit(@active_page).active_public.includes(:creator)
-    @active_last_page = check_last_page(@active_events, 'active')
+    @page = params.fetch(:page, 0).to_i
+    @events = Event.page_limit(@page).active_public.includes(:creator)
+    @type = 'active'
+    @last_page = check_last_page(@events, @type)
   end
 
   def show
@@ -62,22 +63,5 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:title, :description, :status, :location, :event_date, :active_page, :old_page, :close_page)
-  end
-
-  def check_last_page(list_events, type_event)
-    list_events = list_events.to_a
-
-    case type_event
-    when 'close'
-      last_event = Event.close_events.last
-    when 'active'
-      last_event = Event.where(status: 'public').last
-    when 'old'
-      last_event = Event.where("event_date < ?", DateTime.now).last
-    end
-
-    return true if list_events.include?(last_event)
-
-    false
   end
 end

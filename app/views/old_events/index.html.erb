@@ -1,2 +1,8 @@
-<h1>OldEvents#index</h1>
-<p>Find me in app/views/old_events/index.html.erb</p>
+<section class='section'>
+  <div class='container'>
+    <h1 class='title is-3'>List of old events</h1>
+    <%= render 'shared/display_events', list_events: @events %>
+  </div>
+
+  <%= render partial: 'shared/pagination' %>
+</section>

@@ -1,7 +1,8 @@
 class OldEventsController < ApplicationController
   def index
-    @old_page = params.fetch(:old_page, 0).to_i
-    @old_events = Event.page_limit(@old_page).past_events.includes(:creator)
-    @old_last_page = check_last_page(@old_events, 'old')
+    @page = params.fetch(:page, 0).to_i
+    @events = Event.page_limit(@page).past_events.includes(:creator)
+    @type = 'old'
+    @last_page = check_last_page(@events, @type)
   end
 end

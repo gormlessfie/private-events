@@ -1,4 +1,4 @@
-class Event < ApplicationRecord
+class Event < ApplicationRecord 
   EVENTS_PER_PAGE = 2
 
   scope :past_events, -> { where('event_date < ?', DateTime.now) }
