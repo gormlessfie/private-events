@@ -1,0 +1,41 @@
+<% unless events.empty? %>
+
+  <div class='container box'>
+    <div class='columns'>
+      <span class='column'></span>
+
+      <span class='column'>
+        <div class='columns'>
+          <% if action_page > 0 %>
+            <%= link_to 'Previous', events_path(action_page_type => action_page - 1,
+                                                second_page_type => second_page,
+                                                third_page_type => third_page),
+                                                class: 'column button is-light' %>
+          <% else %>
+            <button class='column button is-light', disabled>Previous</button>
+          <% end %>
+
+          <span class='column'>
+            <span class='columns'>
+              <span class='column is-one-third'></span>
+              <span class='column is-one-third'>Pg: <%= action_page %></span>
+              <span class='column is-one-third'></span>
+            </span>
+          </span>
+
+          <% if events.size == 3 %>
+            <%= link_to 'Next', events_path(action_page_type => action_page + 1,
+                                                second_page_type => second_page,
+                                                third_page_type => third_page),
+                                                class: 'column button is-light' %>
+          <% else %>
+            <button class='column button is-light', disabled>Next</button>
+          <% end %>
+        </div>
+      </span>
+
+      <span class='column'></span>
+    </div>
+  </div>
+
+<% end %>
