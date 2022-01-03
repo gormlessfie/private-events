@@ -4,11 +4,11 @@ class ApplicationController < ActionController::Base
 
     case type_event
     when 'close'
-      last_event = Event.close_events.last
+      last_event = Event.public_events.close_events.last
     when 'active'
-      last_event = Event.active_public.last
+      last_event = Event.public_events.active_events.last
     when 'old'
-      last_event = Event.past_events.last
+      last_event = Event.public_events.past_events.first
     end
 
     return true if list_events.include?(last_event)

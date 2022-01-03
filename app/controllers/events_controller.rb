@@ -3,7 +3,8 @@ class EventsController < ApplicationController
 
   def index
     @page = params.fetch(:page, 0).to_i
-    @events = Event.page_limit(@page).active_public.includes(:creator)
+    @events = Event.page_limit(@page).active_events.public_events
+                                     .includes(:creator).order(event_date: :asc)
     @type = 'active'
     @last_page = check_last_page(@events, @type)
   end
