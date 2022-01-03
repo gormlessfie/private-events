@@ -4,14 +4,14 @@
       <%= link_to 'Homepage', root_path, class:'title is-3 has-text-white' %>
     </div>
 
-    <div class='navbar-burger'>
+    <div class='navbar-burger' data-target='navMenu'>
         <span aria-hidden=true></span>
         <span aria-hidden=true></span>
         <span aria-hidden=true></span>
     </div>
   </div>
 
-  <div class='navbar-menu'>
+  <div class='navbar-menu' id='navMenu'>
     <div class='navbar-start'>
       <% if user_signed_in? %>
         <div class='navbar-item'>
@@ -29,7 +29,6 @@
         </div>
       <% end %>
     </div>
-
 
     <div class='navbar-end'>
       <% if user_signed_in? %>
