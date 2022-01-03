@@ -11,7 +11,10 @@
                                               second_page: @active_page,
                                               second_page_type: :active_page,
                                               third_page: @old_page,
-                                              third_page_type: :old_page } %>
+                                              third_page_type: :old_page,
+                                              action_status: @close_last_page,
+                                              second_status: @active_last_page,
+                                              third_status: @old_last_page } %>
 </section>
 
 <section class='section'>
@@ -26,7 +29,10 @@
                                               second_page: @close_page,
                                               second_page_type: :close_page,
                                               third_page: @old_page,
-                                              third_page_type: :old_page } %>
+                                              third_page_type: :old_page,
+                                              action_status: @active_last_page,
+                                              second_status: @close_last_page,
+                                              third_status: @old_page } %>
 </section>
 
 -->
@@ -43,5 +49,8 @@
                                               second_page: @close_page,
                                               second_page_type: :close_page,
                                               third_page: @active_page,
-                                              third_page_type: :active_page } %>
+                                              third_page_type: :active_page,
+                                              action_status: @old_last_page,
+                                              second_status: @close_last_page,
+                                              third_status: @active_last_page } %>
 </section>

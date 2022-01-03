@@ -18,12 +18,12 @@
           <span class='column'>
             <span class='columns'>
               <span class='column is-one-fifth'></span>
-              <span class='column is-three-fifth'><p>Pg: <%= action_page %></p></span>
+              <span class='column is-three-fifth'><p>Page: <%= action_page %></p></span>
               <span class='column is-one-fifth'></span>
             </span>
           </span>
 
-          <% if events.size == 3 %>
+          <% unless action_status %>
             <%= link_to 'Next', events_path(action_page_type => action_page + 1,
                                                 second_page_type => second_page,
                                                 third_page_type => third_page),
